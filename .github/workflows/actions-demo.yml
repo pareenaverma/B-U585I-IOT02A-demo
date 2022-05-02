@@ -31,8 +31,7 @@ jobs:
           node-version: 14.17.2
 
       - name: Install Corellium API
-        run: git clone https://github.com/ARM-software/avh-api.git
-             npm install
+        run: git clone https://github.com/ARM-software/avh-api.git && cd avh-api/javascript/native-examples/ && npm install
 
       - name: Run script
         env:
