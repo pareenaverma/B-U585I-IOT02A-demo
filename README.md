@@ -1,4 +1,4 @@
-GitHub Actions Workflow 
+GitHub Actions Example
 Set login information in GitHub Secrets
 ```
 ENDPOINT: https://app.avh.arm.com/api
