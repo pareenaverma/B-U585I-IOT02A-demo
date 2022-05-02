@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
          # Starting a VM on Corellium requires account info.
             API_TOKEN: ${{ secrets.API_TOKEN }}
             ENPOINT: ${{ secrets.ENDPOINT }}
-        run: node create-vm.js
+        run: cd avh-api/javascript/native-examples && node create-vm.js
         
       - name: Archive results
         uses: actions/upload-artifact@v2
