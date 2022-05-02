@@ -22,10 +22,10 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 apiEndpoint = "https://app.avh.arm.com/api"
-apiToken = "40258cd7c66f5999fddc.302aa699501a1f9b5695c1f1a1edf4125ba62419f772303944c8b239e97e66d86aab4b3b7ad6a0ef55d334892952b46d4a261f579ba48976d2b5ed9fc743c42f"
+apiToken = "102a70e63bd4e69f559f.625254f1e7d62460ae0b64986e4ca73df92da7b6e41d368c9ca66c736bd3b2157bb1f0cca6d8c1228968861a589d2ed7bee5ef4d977b5a58abceaec0c0245e02"
 fw = "IOT_HTTP_WebServer.elf"
 flavor = "stm32u5-b-u585i-iot02a"
-vmName = 'mrrumpf-B-U585I-IOT02A'
+vmName = 'Pareena-ST'
 
 async def waitForState(instance, state):
   global api_instance

@@ -7,6 +7,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ENDPOINT: ${{ secrets.ENDPOINT }}
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+      INSTANCE: ${{ secrets.INSTANCE }}
     steps:
       - name: pull
         uses: actions/checkout@v2
