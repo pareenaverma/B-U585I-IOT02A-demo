@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Install Node
+        uses: actions/setup-node@aa759c6c94d3800c55b8601f21ba4b2371704cb7
+        with:
+          node-version: 14.17.2
+
+      - name: Install Corellium API
+        run: git clone https://github.com/ARM-software/avh-api.git
+             npm install
+
+      - name: Run script
+        env:
+         # Starting a VM on Corellium requires account info.
+            API_TOKEN: ${{ secrets.API_TOKEN }}
+            ENPOINT: ${{ secrets.ENDPOINT }}
+        run: node create-vm.js
+        
+      - name: Archive results
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: |
+             run-*.log
+          retention-days: 1
+          if-no-files-found: error
+        if: always()
+              
+
